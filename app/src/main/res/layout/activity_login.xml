@@ -1,68 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#23213F"
     android:orientation="vertical"
-    tools:context=".loginActivity"
-    tools:layout_editor_absoluteX="-5dp"
-    tools:layout_editor_absoluteY="-8dp">
+    tools:context=".loginActivity">
 
-    <EditText
-        android:id="@+id/loginLine"
-        android:layout_width="328dp"
-        android:layout_height="56dp"
-        android:layout_gravity="center_horizontal"
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/loginLayout"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
         android:layout_marginTop="80dp"
-        android:background="#15FFFFFF"
-        android:ems="10"
-        android:hint="   Логин"
-        android:inputType="phone"
-        android:textAlignment="viewStart"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#9792A5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlCompat" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:labelText="@string/loginHint"
+        app:helperText=" "
+        app:errorEnabled="true"
+        app:primaryColor="@color/colorAccent"
+        app:useDenseSpacing="true"
 
-    <EditText
-        android:id="@+id/passLine"
-        android:layout_width="328dp"
-        android:layout_height="56dp"
-        android:layout_gravity="center_horizontal"
+        >
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/loginLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:paddingLeft="12dp"
+            android:paddingRight="14dp"
+            android:singleLine="false"
+            android:textColor="@color/colorTextLoginActivity"
+            android:background="@color/colorTextLayoutBackground"
+            tools:ignore="RtlHardcoded" />
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/passLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="#15FFFFFF"
-        android:ems="10"
-        android:hint="   Пароль"
-        android:inputType="textPassword"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#9792A5"
-        android:tooltipText="   Пароль"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginLine"
-        android:autofillHints="" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:labelText="@string/passHint"
+        app:helperText=" "
+        app:endIcon="@drawable/ic_eye"
+        app:primaryColor="@color/colorAccent"
+        app:helperTextColor="@color/colorTextLoginActivity"
+        app:useDenseSpacing="true"
+        >
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="24dp"
-        android:background="#1EF0D7"
-        android:text="Войти"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passLine"
-        app:layout_constraintVertical_bias="0.925" />
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/passLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@color/colorTextLoginActivity"
+            android:background="@color/colorTextLayoutBackground"
+            android:paddingLeft="12dp"
+            android:paddingRight="14dp"
+            tools:ignore="RtlHardcoded" />
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/loginBtnLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.kusu.loadingbutton.LoadingButton
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/enterBtn"
+            android:textColor="@color/colorLoginLoader"
+            app:lb_loaderColor="@color/colorLoginLoader"
+            tools:targetApi="lollipop" />
+    </RelativeLayout>
+
+</LinearLayout>
 
