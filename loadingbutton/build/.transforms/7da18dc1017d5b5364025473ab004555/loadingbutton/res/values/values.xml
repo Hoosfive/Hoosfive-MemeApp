@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Black">#000</color>
+    <color name="fbutton_default_color">#3eadeb</color>
+    <color name="fbutton_default_shadow_color">#ff3493c8</color>
+    <color name="pressed_color">#ffd32f2f</color>
+    <color name="ripple_color">#ffeeeeee</color>
+    <color name="transparent">#00000000</color>
+    <color name="unpressed_color">#fff44336</color>
+    <color name="white">#FFF</color>
+    <dimen name="fbutton_default_conner_radius">8dp</dimen>
+    <dimen name="fbutton_default_padding_bottom">5dp</dimen>
+    <dimen name="fbutton_default_padding_left">10dp</dimen>
+    <dimen name="fbutton_default_padding_right">10dp</dimen>
+    <dimen name="fbutton_default_padding_top">5dp</dimen>
+    <dimen name="fbutton_default_progress_margin">15dp</dimen>
+    <dimen name="fbutton_default_progress_width">10dp</dimen>
+    <dimen name="fbutton_default_shadow_height">4dp</dimen>
+    <string name="app_name">LoadingButton</string>
+    <declare-styleable name="LoadingButton">
+        <attr format="color" name="lb_buttonColor"/>
+        <attr format="color" name="lb_loaderColor"/>
+        <attr format="color" name="lb_shadowColor"/>
+        <attr format="dimension" name="lb_cornerRadius"/>
+        <attr format="dimension" name="lb_shadowHeight"/>
+        <attr format="dimension" name="lb_loaderWidth"/>
+        <attr format="dimension" name="lb_loaderMargin"/>
+        <attr format="boolean" name="lb_isShadowEnable"/>
+        <attr format="boolean" name="lb_isCircular"/>
+        <attr format="boolean" name="lb_isLoading"/>
+
+    </declare-styleable>
+</resources>
