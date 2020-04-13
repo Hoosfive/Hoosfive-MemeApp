@@ -4,12 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 
 class ResponseBody {
-    @SerializedName("accessToken")
-    private var accessToken: String? = null
-
-    companion object{
-        fun getAccessToken(responseBody : ResponseBody): String? {
-            return responseBody.accessToken
-        }
-    }
+    @SerializedName("accessToken") val accessToken : String? = null
+    @SerializedName("userInfo") val userInfo : UserInfo? = null
 }
