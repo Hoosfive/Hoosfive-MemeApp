@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#23213F"
     android:orientation="vertical"
-    tools:context=".loginActivity">
+    tools:context=".LoginActivity">
 
     <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
         android:id="@+id/loginLayout"
