@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         const val FIRSTNAME_PREFERENCES = "firstName"
         const val LASTNAME_PREFERENCES = "lastName"
         const val DESCRIPTION_PREFERENCES = "userDescription"
+        //const val PREFS_DEFAULT_VALUE = "error"
         lateinit var pref: SharedPreferences
 
 
@@ -95,33 +97,46 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun getAuthToken()
     {
-        val auth = AuthBody()
-        auth.login = loginLine.text.toString()
-        auth.password = passLine.text.toString()
-        var userDsta = ResponseBody()
-        NetworkService.getInstance()
-            .jsonApi
-            .postData(auth)
+       lateinit var userData : ResponseBody
+        NetworkService.createInstance()
+            .create(AuthApi::class.java)
+            .postData(AuthBody(loginLine.text.toString(),passLine.text.toString()))
             .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                    userDsta = response.body()!!
-                //    Toast.makeText(this@LoginActivity, userDsta.accessToken + userDsta.userInfo, Toast.LENGTH_SHORT).show()
+                    userData = response.body()!!
+                    //Toast.makeText(this@LoginActivity, userData.accessToken + userData.userInfo, Toast.LENGTH_SHORT).show()
+                    editPrefs(userData)
                 }
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    val snack = Snackbar.make(loginBtnLayout, "Во время запроса произошла ошибка, возможно вы неверно ввели логин/пароль", Snackbar.LENGTH_LONG)
+                    snack.view.setBackgroundColor(resources.getColor(R.color.colorSnackErrorLoginBackground))
+                    snack.show()
                     t.printStackTrace()
                 }
             })
-        editPrefs(userDsta)
     }
     private fun editPrefs(userData : ResponseBody)
     {
         val editor = pref.edit()
         editor.putString(AUTH_TOKEN_PREFERENCES, userData.accessToken)
-        userData.userInfo?.id?.let { editor.putInt(ID_PREFERENCES, it) }
-        userData.userInfo?.username?.let { editor.putString(USERNAME_PREFERENCES, it) }
-        userData.userInfo?.firstName?.let { editor.putString(FIRSTNAME_PREFERENCES, it) }
-        userData.userInfo?.lastName?.let { editor.putString(LASTNAME_PREFERENCES, it) }
-        userData.userInfo?.userDescription?.let { editor.putString(DESCRIPTION_PREFERENCES, it) }
+        editor.putInt(ID_PREFERENCES,userData.userInfo.id)
+        editor.putString(USERNAME_PREFERENCES,userData.userInfo.username)
+        editor.putString(FIRSTNAME_PREFERENCES, userData.userInfo.firstName)
+        editor.putString(LASTNAME_PREFERENCES,userData.userInfo.lastName)
+        editor.putString(DESCRIPTION_PREFERENCES,userData.userInfo.userDescription)
         editor.apply()
+        //testPrefs()
     }
+    /*private fun testPrefs()
+    {
+        var string = StringBuilder()
+        string.append(pref.getInt(ID_PREFERENCES,0).toString())
+        string.append(pref.getString(USERNAME_PREFERENCES,PREFS_DEFAULT_VALUE))
+        string.append(pref.getString(FIRSTNAME_PREFERENCES,PREFS_DEFAULT_VALUE))
+        string.append(pref.getString(LASTNAME_PREFERENCES,PREFS_DEFAULT_VALUE))
+        string.append(pref.getString(DESCRIPTION_PREFERENCES,PREFS_DEFAULT_VALUE))
+        Snackbar.make(loginBtnLayout, "Во время запроса произошла ошибка, возможно вы неверно ввели логин/пароль", Snackbar.LENGTH_LONG).show()
+        Snackbar.make(loginBtnLayout, string, Snackbar.LENGTH_LONG).show()
+
+    }*/
 }

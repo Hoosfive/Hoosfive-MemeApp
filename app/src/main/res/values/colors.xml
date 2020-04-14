@@ -9,4 +9,5 @@
     <color name="colorsTextLayoutError">#FF4747</color>
     <color name="colorTextLoginActivity">#FFFFFF</color>
     <color name="colorLoginLoader">#000000</color>
+    <color name="colorSnackErrorLoginBackground">#FF575D</color>
 </resources>
