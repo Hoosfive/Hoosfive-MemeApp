@@ -11,4 +11,7 @@
     <style name="AppTheme.Ripple">
         <item name="colorControlHighlight">@color/colorRipple</item>
     </style>
+    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/colorLoginLoader</item>
+    </style>
 </resources>

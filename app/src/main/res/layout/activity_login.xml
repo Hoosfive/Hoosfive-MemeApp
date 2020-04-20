@@ -12,27 +12,25 @@
         android:id="@+id/loginLayout"
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:layout_marginTop="80dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="80dp"
         android:layout_marginRight="16dp"
-        app:labelText="@string/loginHint"
-        app:helperText=" "
         app:errorEnabled="true"
+        app:helperText=" "
+        app:labelText="@string/loginHint"
         app:primaryColor="@color/colorAccent"
-        app:useDenseSpacing="true"
-
-        >
+        app:useDenseSpacing="true">
 
         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
             android:id="@+id/loginLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/colorTextLayoutBackground"
             android:inputType="phone"
             android:paddingLeft="12dp"
             android:paddingRight="14dp"
             android:singleLine="false"
             android:textColor="@color/colorTextLoginActivity"
-            android:background="@color/colorTextLayoutBackground"
             tools:ignore="RtlHardcoded" />
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -40,26 +38,25 @@
         android:id="@+id/passLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        app:labelText="@string/passHint"
-        app:helperText=" "
         app:endIcon="@drawable/ic_eye"
-        app:primaryColor="@color/colorAccent"
+        app:helperText=" "
         app:helperTextColor="@color/colorTextLoginActivity"
-        app:useDenseSpacing="true"
-        >
+        app:labelText="@string/passHint"
+        app:primaryColor="@color/colorAccent"
+        app:useDenseSpacing="true">
 
         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
             android:id="@+id/passLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="@color/colorTextLoginActivity"
             android:background="@color/colorTextLayoutBackground"
+            android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:paddingRight="14dp"
+            android:textColor="@color/colorTextLoginActivity"
             tools:ignore="RtlHardcoded" />
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -68,19 +65,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.kusu.loadingbutton.LoadingButton
+
+        <Button
             android:id="@+id/loginBtn"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="22dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/loginBtn"
+            android:textColor="@color/colorLoginLoader"
+            android:theme="@style/AppTheme.Ripple"
+            tools:targetApi="lollipop" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/CircularProgress"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="24dp"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@string/enterBtn"
-            android:textColor="@color/colorLoginLoader"
-            app:lb_loaderColor="@color/colorLoginLoader"
-            tools:targetApi="lollipop" />
+            android:indeterminateTint="@color/colorLoginLoader"
+            android:visibility="visible" />
+
     </RelativeLayout>
 
 </LinearLayout>

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MemeApp</string>
-    <string name="enterBtn">Войти</string>
+    <string name="loginBtn">Войти</string>
     <string name="passHint">Пароль</string>
     <string name="loginHint">Логин</string>
+    <string name="passHelperText">Пароль должен содержать %1$d символов</string>
+    <string name="emptyFieldsError">Поле не может быть пустым</string>
+    <string name="loginSnackBarErrorText">Во время запроса произошла ошибка, возможно вы неверно ввели логин/пароль</string>
 </resources>

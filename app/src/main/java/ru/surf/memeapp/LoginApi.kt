@@ -4,8 +4,8 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface AuthApi {
+interface LoginApi {
 
     @POST("/auth/login")
-    fun postData(@Body auth: AuthBody): Call<ResponseBody>
+    fun login(@Body auth: AuthBody): Call<LoginResponseBody>
 }

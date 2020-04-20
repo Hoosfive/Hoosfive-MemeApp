@@ -1,2 +1,2 @@
-include ':app', ':loadingbutton'
+include ':app'
 rootProject.name='MemeApp'
