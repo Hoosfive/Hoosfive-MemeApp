@@ -10,4 +10,6 @@
     <color name="colorTextLoginActivity">#FFFFFF</color>
     <color name="colorLoginLoader">#23213F</color>
     <color name="colorSnackErrorLoginBackground">#FF575D</color>
+    <color name="colorToolbarBackgroundMainActivity">#312F51</color>
+    <color name="colorBottomNavigationBackgroundMainActivity">#12102B</color>
 </resources>

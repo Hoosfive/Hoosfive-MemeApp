@@ -8,7 +8,11 @@ class Preferences {
     companion object {
         private const val USER_DATA_PREFERENCES = "UserData"
         private const val AUTH_TOKEN_PREFERENCES = "auth_token"
-        private const val USER_INFO_PREFERENCES = "user_info"
+        private const val ID_PREFERENCES = "id"
+        private const val USERNAME_PREFERENCES = "username"
+        private const val FIRST_NAME_PREFERENCES = "firstName"
+        private const val LAST_NAME_PREFERENCES = "lastName"
+        private const val DESCRIPTION_PREFERENCES = "userDescription"
         private const val DEF_VALUE = "no_data_found"
         private lateinit var editor: SharedPreferences.Editor
 
@@ -24,7 +28,11 @@ class Preferences {
 
         fun editUserInfoPrefs(context: Context, userInfo: UserInfo) {
             editor = getPref(context).edit()
-            editor.putString(USER_INFO_PREFERENCES, userInfo.serialize())
+            editor.putInt(ID_PREFERENCES, userInfo.id)
+            editor.putString(USERNAME_PREFERENCES, userInfo.username)
+            editor.putString(FIRST_NAME_PREFERENCES, userInfo.firstName)
+            editor.putString(LAST_NAME_PREFERENCES, userInfo.lastName)
+            editor.putString(DESCRIPTION_PREFERENCES, userInfo.userDescription)
             editor.apply()
         }
 
@@ -33,14 +41,14 @@ class Preferences {
         }
 
         fun getUserInfoPrefs(context: Context): UserInfo {
-            return UserInfo.deserialize(
-                getPref(context).getString(
-                    USER_INFO_PREFERENCES,
-                    DEF_VALUE
-                ).toString()
+            val pref = getPref(context)
+            return UserInfo(
+                pref.getInt(ID_PREFERENCES, 0),
+                pref.getString(USERNAME_PREFERENCES, DEF_VALUE).toString(),
+                pref.getString(FIRST_NAME_PREFERENCES, DEF_VALUE).toString(),
+                pref.getString(LAST_NAME_PREFERENCES, DEF_VALUE).toString(),
+                pref.getString(DESCRIPTION_PREFERENCES, DEF_VALUE).toString()
             )
         }
     }
-
-
 }

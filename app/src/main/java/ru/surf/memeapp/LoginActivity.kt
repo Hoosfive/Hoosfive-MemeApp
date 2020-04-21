@@ -2,6 +2,7 @@ package ru.surf.memeapp
 
 import android.os.Bundle
 import android.text.InputType
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
@@ -34,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
                     passLine.text.toString(),
                     { saveData(it) },
                     { showError() })
-                toggleLoading()
+                setLoading(true)
             }
         }
         passLine.setOnFocusChangeListener { _, _ ->
@@ -58,13 +59,16 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun toggleLoading() {
-        if (loginBtn.isEnabled)
+    private fun setLoading(isLoading : Boolean) {
+        loginBtn.isEnabled = !isLoading
+        if (isLoading) {
             loginBtn.text = ""
-        else
+            progressBar.visibility = View.VISIBLE
+        }
+        else {
             loginBtn.text = resources.getString(R.string.loginBtn)
-        loginBtn.isEnabled = !loginBtn.isEnabled
-        progressBar.visibility
+            progressBar.visibility = View.GONE
+        }
     }
 
     private fun validateFields(): Boolean {
@@ -91,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
     private fun saveData(loginResponse: LoginResponseBody) {
         Preferences.editUserInfoPrefs(baseContext, loginResponse.userInfo)
         Preferences.editAuthTokenPref(baseContext, loginResponse.accessToken)
-        toggleLoading()
+        setLoading(false)
     }
 
     private fun showError() {
@@ -102,6 +106,6 @@ class LoginActivity : AppCompatActivity() {
         )
         snack.view.setBackgroundColor(resources.getColor(R.color.colorSnackErrorLoginBackground))
         snack.show()
-        toggleLoading()
+        setLoading(false)
     }
 }
