@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
@@ -10,8 +10,7 @@
     <ImageView
         android:id="@+id/IV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="100dp" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/TV"
@@ -22,23 +21,21 @@
         android:layout_marginEnd="13dp"
         android:layout_marginBottom="1dp"
         android:maxLines="1"
-        android:text="This is meme cell"
-        android:textColor="@color/colorWhite"
-        android:textSize="12sp" />
+        android:textColor="@color/colorWhite" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="8dp"
+        android:theme="@style/Ripple">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/likeBtn"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:backgroundTint="@color/colorLighterPrimary"
-            android:src="@drawable/like_btn"
-            android:theme="@style/Ripple" />
+            android:src="@drawable/like_btn_selector" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/shareBtn"
@@ -46,8 +43,7 @@
             android:layout_height="24dp"
             android:layout_marginStart="4dp"
             android:backgroundTint="@color/colorLighterPrimary"
-            android:src="@drawable/share_btn"
-            android:theme="@style/Ripple" />
+            android:src="@drawable/share_btn" />
     </LinearLayout>
 
 </LinearLayout>

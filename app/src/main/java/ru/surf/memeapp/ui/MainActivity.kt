@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initListeners()
+
     }
 
     private fun initListeners() {
@@ -55,7 +56,6 @@ class MainActivity : AppCompatActivity() {
                 false
             }
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
-
+        //mOnNavigationItemSelectedListener.run { R.id.btn_popular_memes }
     }
 }
