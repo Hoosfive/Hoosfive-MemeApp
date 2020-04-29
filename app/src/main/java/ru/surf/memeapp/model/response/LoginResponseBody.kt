@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class LoginResponseBody(
     @SerializedName("accessToken") val accessToken: String,
-    @SerializedName("userInfoResponseBody") val userInfoResponseBody: UserInfoResponseBody
+    @SerializedName("userInfo") val userInfoResponseBody: UserInfoResponseBody
 )

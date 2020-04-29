@@ -104,11 +104,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun saveData(loginResponse: LoginResponseBody) {
-        Preferences.editUserInfoPrefs(baseContext, loginResponse.userInfoResponseBody)
         Preferences.editAuthTokenPref(
             baseContext,
             loginResponse.accessToken
         )
+        Preferences.editUserInfoPrefs(baseContext, loginResponse.userInfoResponseBody)
         setLoading(false)
     }
 

@@ -33,16 +33,15 @@ class PopularMemesFragment : Fragment() {
     }
 
     private fun getMemes() {
-        setLoading(true)
         NetworkService.getMemes({ showMeme(it) }, { showError() })
     }
 
     private fun showMeme(memes: List<MemesResponseBody>) {
-        setLoading(false)
+        removeLoading()
     }
 
     private fun showError() {
-        setLoading(false)
+        removeLoading()
         val snack = Snackbar.make(
             popular_meme_layout,
             R.string.popularMemesSnackBarErrorText,
@@ -53,11 +52,7 @@ class PopularMemesFragment : Fragment() {
         textStub.visibility = View.VISIBLE
     }
 
-    private fun setLoading(isLoading: Boolean) {
-
-        if (isLoading)
-            progressBar.visibility = View.VISIBLE
-        else
-            progressBar.visibility = View.GONE
+    private fun removeLoading() {
+        progressBar.visibility = View.GONE
     }
 }
