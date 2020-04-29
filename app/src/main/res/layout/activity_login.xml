@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#23213F"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".ui.LoginActivity">
 
     <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
         android:id="@+id/loginLayout"
@@ -30,7 +30,7 @@
             android:paddingLeft="12dp"
             android:paddingRight="14dp"
             android:singleLine="false"
-            android:textColor="@color/colorTextLoginActivity"
+            android:textColor="@color/colorWhite"
             tools:ignore="RtlHardcoded" />
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -43,7 +43,7 @@
         android:layout_marginRight="16dp"
         app:endIcon="@drawable/ic_eye"
         app:helperText=" "
-        app:helperTextColor="@color/colorTextLoginActivity"
+        app:helperTextColor="@color/colorWhite"
         app:labelText="@string/passHint"
         app:primaryColor="@color/colorAccent"
         app:useDenseSpacing="true">
@@ -56,7 +56,7 @@
             android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:paddingRight="14dp"
-            android:textColor="@color/colorTextLoginActivity"
+            android:textColor="@color/colorWhite"
             tools:ignore="RtlHardcoded" />
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -76,20 +76,19 @@
             android:layout_marginBottom="22dp"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/loginBtn"
-            android:textColor="@color/colorLoginLoader"
-            android:theme="@style/AppTheme.Ripple"
+            android:textColor="@color/colorPrimary"
+            android:theme="@style/Ripple"
             tools:targetApi="lollipop" />
 
         <ProgressBar
             android:id="@+id/progressBar"
-            style="@style/CircularProgress"
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="24dp"
-            android:indeterminateTint="@color/colorLoginLoader"
+            android:indeterminateTint="@color/colorPrimary"
             android:visibility="visible" />
 
     </RelativeLayout>

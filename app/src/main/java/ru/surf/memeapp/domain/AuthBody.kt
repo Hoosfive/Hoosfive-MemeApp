@@ -1,4 +1,4 @@
-package ru.surf.memeapp
+package ru.surf.memeapp.domain
 
 import com.google.gson.annotations.SerializedName
 

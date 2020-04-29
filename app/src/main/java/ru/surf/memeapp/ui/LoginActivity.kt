@@ -1,11 +1,16 @@
-package ru.surf.memeapp
+package ru.surf.memeapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
+import ru.surf.memeapp.R
+import ru.surf.memeapp.model.NetworkService
+import ru.surf.memeapp.model.Preferences
+import ru.surf.memeapp.model.response.LoginResponseBody
 
 
 class LoginActivity : AppCompatActivity() {
@@ -32,9 +37,13 @@ class LoginActivity : AppCompatActivity() {
             if (validateFields()) {
                 NetworkService.auth(
                     loginLine.text.toString(),
-                    passLine.text.toString(),
-                    { saveData(it) },
-                    { showError() })
+                    passLine.text.toString(), {
+                        saveData(it)
+                        startActivity(Intent(this, MainActivity::class.java))
+                        this.finish()
+                    }, {
+                        showError()
+                    })
                 setLoading(true)
             }
         }
@@ -59,13 +68,12 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun setLoading(isLoading : Boolean) {
+    private fun setLoading(isLoading: Boolean) {
         loginBtn.isEnabled = !isLoading
         if (isLoading) {
             loginBtn.text = ""
             progressBar.visibility = View.VISIBLE
-        }
-        else {
+        } else {
             loginBtn.text = resources.getString(R.string.loginBtn)
             progressBar.visibility = View.GONE
         }
@@ -88,13 +96,19 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setPassHelperTextVisibility() {
         if (passLine.length() < MIN_PASS_LENGTH)
-            passLayout.helperText = resources.getString(R.string.passHelperText, MIN_PASS_LENGTH)
+            passLayout.helperText = resources.getString(
+                R.string.passHelperText,
+                MIN_PASS_LENGTH
+            )
         else passLayout.helperText = " "
     }
 
     private fun saveData(loginResponse: LoginResponseBody) {
-        Preferences.editUserInfoPrefs(baseContext, loginResponse.userInfo)
-        Preferences.editAuthTokenPref(baseContext, loginResponse.accessToken)
+        Preferences.editUserInfoPrefs(baseContext, loginResponse.userInfoResponseBody)
+        Preferences.editAuthTokenPref(
+            baseContext,
+            loginResponse.accessToken
+        )
         setLoading(false)
     }
 
@@ -104,7 +118,7 @@ class LoginActivity : AppCompatActivity() {
             R.string.loginSnackBarErrorText,
             Snackbar.LENGTH_LONG
         )
-        snack.view.setBackgroundColor(resources.getColor(R.color.colorSnackErrorLoginBackground))
+        snack.view.setBackgroundColor(resources.getColor(R.color.colorError))
         snack.show()
         setLoading(false)
     }

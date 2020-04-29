@@ -1,8 +1,8 @@
-package ru.surf.memeapp
+package ru.surf.memeapp.model.response
 
 import com.google.gson.annotations.SerializedName
 
-data class UserInfo(
+data class UserInfoResponseBody(
     @SerializedName("id") val id: Int,
     @SerializedName("username") val username: String,
     @SerializedName("firstName") val firstName: String,
