@@ -28,8 +28,10 @@ class PopularMemesFragment : Fragment() {
         getMemes()
         return inflater.inflate(
             R.layout.fragment_popular_memes, container,
-    false)
-}
+            false
+        )
+    }
+
     private fun getMemes() {
         setLoading(true)
         NetworkService.getMemes({ showMeme(it) }, { showError() })
@@ -37,7 +39,6 @@ class PopularMemesFragment : Fragment() {
 
     private fun showMeme(memes: List<MemesResponseBody>) {
         setLoading(false)
-        //memes.forEach { x -> TVVV.append(x.toString()) }
     }
 
     private fun showError() {
